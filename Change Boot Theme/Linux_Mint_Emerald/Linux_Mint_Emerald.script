@@ -1,0 +1,156 @@
+# Linux_Mint_Emerald plymouth theme
+# Created by internauta2000
+# Edited by Rutar
+
+// Отримання ширини дисплею
+Window.GetMaxWidth = fun() {
+
+    i = 0;
+    width = 0;
+    while (Window.GetWidth(i)) {
+        width = Math.Max(width, Window.GetWidth(i));
+        i++;
+    }
+
+    return width;
+
+};
+
+///////////////////////////////////////////////////////////////////////////////
+
+// Отримання висоти дисплею
+Window.GetMaxHeight = fun() {
+
+    i = 0;
+    height = 0;
+    while (Window.GetHeight(i)){
+        height = Math.Max(height, Window.GetHeight(i));
+        i++;
+    }
+
+    return height;
+
+};
+
+///////////////////////////////////////////////////////////////////////////////
+
+// Кількість кадрів анімації
+anim.imagecount = 32;
+
+// Масштабний коефіцієнт
+anim.scale_factor = Window.GetHeight() / 1080;
+
+// Ширина та висота емблеми
+emblem.size =  0.25 * Window.GetHeight();
+
+// Позиція емблеми по горизонталі
+emblem.xPos = Window.GetWidth() / 24 * 6;
+
+// Позиція емблеми по вертикалі
+emblem.yPos = Window.GetHeight() / 2;
+
+// Позиція логотипу по горизонталі
+logo.xPos = Window.GetWidth() / 24 * 16;
+
+// Позиція логотипу по вертикалі
+logo.yPos = Window.GetHeight() / 2;
+
+///////////////////////////////////////////////////////////////////////////////
+
+// Функція генерує кадри анімації
+fun RotatedImage (index) {
+	
+    index = Math.Int(index);
+	if (!RotatedImageCache[index])
+        { RotatedImageCache[index] = anim.image.Rotate((Math.Pi*2*index)/anim.imagecount); }
+
+	return RotatedImageCache[index];
+
+}
+
+///////////////////////////////////////////////////////////////////////////////
+
+// Завантаження зображення для анімації
+anim.original = ImageNew("animation.png");
+
+// Створення масштабованого зображення для анімації
+anim.image = anim.original.Scale(emblem.size * 1.25, emblem.size * 1.25);
+
+// Створення та налаштування спрайту
+anim.sprite = SpriteNew();
+anim.sprite.SetImage(RotatedImage (0));
+anim.sprite.SetX(emblem.xPos - anim.image.GetWidth()/2);
+anim.sprite.SetY(emblem.yPos - anim.image.GetHeight()/2);
+
+// Кут повороту спрайту
+anim.angle = 0;
+
+// Індекс анімації спрайту
+anim.index = 0;
+
+///////////////////////////////////////////////////////////////////////////////
+
+// Завантаження та налаштування емблеми
+emblem.original = ImageNew("emblem.png");
+emblem.image = emblem.original.Scale(emblem.size,
+                                     emblem.size);
+emblem.sprite = SpriteNew();
+emblem.sprite.SetImage(emblem.image);
+emblem.sprite.SetX(emblem.xPos - emblem.image.GetWidth()/2);
+emblem.sprite.SetY(emblem.yPos - emblem.image.GetHeight()/2);
+
+///////////////////////////////////////////////////////////////////////////////
+
+// Завантаження та налаштування логотипу
+logo.original = ImageNew("logo.png");
+logo.image = logo.original.Scale(logo.original.GetWidth()  * anim.scale_factor,
+                                 logo.original.GetHeight() * anim.scale_factor);
+logo.sprite = SpriteNew();
+logo.sprite.SetImage(logo.image);
+logo.sprite.SetX(logo.xPos - logo.image.GetWidth()/2);
+logo.sprite.SetY(logo.yPos - logo.image.GetHeight()/2);
+
+///////////////////////////////////////////////////////////////////////////////
+
+// Функція оновлення анімації
+fun refresh_callback () {
+    
+    anim.index += 1;
+	anim.index %= anim.imagecount;
+	anim.sprite.SetImage(RotatedImage (anim.index));
+
+}
+
+// Задаємо функцію оновлення 
+if (Plymouth.GetMode() != "suspend" && Plymouth.GetMode() != "resume") {
+    Plymouth.SetRefreshFunction (refresh_callback);
+}
+
+///////////////////////////////////////////////////////////////////////////////
+
+// Колір фону:
+// 1 - зелений, 2 - червоний, 3 - синій
+background.color = 1;
+
+// Чорний колір фону за замовчуванням
+Window.SetBackgroundTopColor    (0.0, 0.0, 0.0);
+Window.SetBackgroundBottomColor (0.0, 0.0, 0.0);
+
+// Зелений колір фону
+if (background.color == 1) {
+    Window.SetBackgroundTopColor    (0.12, 0.76, 0.34);
+    Window.SetBackgroundBottomColor (0.12, 0.76, 0.34);
+}
+
+// Червоний колір фону
+if (background.color == 2) {
+    Window.SetBackgroundTopColor    (0.85, 0.14, 0.14);
+    Window.SetBackgroundBottomColor (0.85, 0.14, 0.14);
+}
+
+// Синій колір фону
+if (background.color == 3) {
+    Window.SetBackgroundTopColor    (0.15, 0.14, 0.85);
+    Window.SetBackgroundBottomColor (0.15, 0.14, 0.85);
+}
+
