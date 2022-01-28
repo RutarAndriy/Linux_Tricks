@@ -1,0 +1,8 @@
+[Plymouth Theme]
+Name=LinuxMint Emerald Theme
+Description=LinuxMint Emerald theme
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/Linux_Mint_Emerald
+ScriptFile=/usr/share/plymouth/themes/Linux_Mint_Emerald/Linux_Mint_Emerald.script
