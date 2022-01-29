@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Отримання шляху скрипта
 script_file=$(readlink -f -- "${0}")
 script_dir=${script_file%/*}
