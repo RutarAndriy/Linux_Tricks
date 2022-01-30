@@ -13,23 +13,26 @@ APP_CATEGORY="Application;"
 # Додаткові параметри ярлика
 APP_TERMINAL=true
 APP_AUTOSTART=true
-APP_AUTOSTART_DELAY=3
+APP_AUTOSTART_DELAY=5
 
 # Отримання шляху скрипта
 SCRIPT_FILE=$(readlink -f -- "${0}")
 SCRIPT_DIR=${SCRIPT_FILE%/*}
 
+# Робоча директорія програми
+EXEC_PATH=$SCRIPT_DIR
+
 # Запустити файловий менеджер nemo
 EXEC_PARAMS=nemo
 
 # Запустити файл test_script_1, який знаходиться у директорії програми
-# EXEC_PARAMS=$SCRIPT_DIR/test_script_1
+# EXEC_PARAMS=\"$SCRIPT_DIR/test_script_1\"
 
 # Запустити перший файл із директорії програми, який відповідає масці <test*>
-# EXEC_PARAMS=$SCRIPT_DIR/$(ls test* | head -1)
+# EXEC_PARAMS=\"$SCRIPT_DIR/$(ls test* | head -1)\"
 
 # Інвертувати порядок сортування та запустити перший файл із директорії програми, який відповідає масці <test*>
-# EXEC_PARAMS=$SCRIPT_DIR/$(ls -r test* | head -1)
+# EXEC_PARAMS=\"$SCRIPT_DIR/$(ls -r test* | head -1)\"
 
 # Опис ярлика програми
 echo "\
@@ -37,9 +40,10 @@ echo "\
 Name=$APP_NAME
 Comment=$APP_DESC
 GenericName=$APP_DESC
-Exec=\"$EXEC_PARAMS\"
-Terminal=$APP_TERMINAL
+Exec=$EXEC_PARAMS
+Path=$EXEC_PATH
 Icon=$SCRIPT_DIR/$APP_ICON
+Terminal=$APP_TERMINAL
 Type=Application
 Categories=$APP_CATEGORY" >> "$APP_NAME.desktop"
 
