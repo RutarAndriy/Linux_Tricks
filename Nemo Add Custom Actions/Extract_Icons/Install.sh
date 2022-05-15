@@ -10,7 +10,8 @@ sudo apt-get install icoutils
 mkdir scripts
 
 # Записуємо файл скрипта
-echo "[Nemo Action]
+echo \
+"[Nemo Action]
 # Видобування іконок із *.exe та *.dll файлів
 Name=Видобути іконки із %N
 Comment=Видобування іконок із файлів *.exe та *.dll
@@ -22,7 +23,8 @@ EscapeSpaces=true
 Terminal=true" > extract_icons.nemo_action
 
 # Записуємо файл скрипта
-echo "#!/bin/bash
+echo \
+"#!/bin/bash
 mkdir "\$1/\$2_icons"
 wrestool -x --output="\$1/\$2_icons" -t14 "\$1/\$2"
 exit 0" > scripts/extract_icons.sh

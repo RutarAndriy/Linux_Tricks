@@ -7,7 +7,6 @@ cd ~/.local/share/nemo/actions
 rm open_in_notepad++.nemo_action
 
 # Видаляємо іконки
-for size in 16 32 48 64 128 256
-do
-xdg-icon-resource uninstall --size $size notepad++
+for size in 16 32 48 64 128 256; do
+    xdg-icon-resource uninstall --size $size notepad++
 done
