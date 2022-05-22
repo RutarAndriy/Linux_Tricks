@@ -36,8 +36,3 @@ done
 IFS=$IFS_ORIG
 
 }
-
-# Тестування функції
-for bottle in $(get_bottles_list); do
-    echo $bottle
-done
