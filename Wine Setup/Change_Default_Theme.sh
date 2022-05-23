@@ -3,6 +3,8 @@
 # Підключаємо зовнішню функцію
 source "Get_Bottles_List.sh"
 
+# Конфігуруємо вивід інформації
+COLUMNS=1
 # Отримуємо шлях скрипта
 SCRIPTFILE=$(readlink -f -- "${0}")
 SCRIPTDIR=${SCRIPTFILE%/*}
@@ -32,20 +34,19 @@ THEME_FILES=(\
 # Вибираємо wine-префікс
 echo
 echo "Виберіть wine-префікс:"
-select filename in $(get_bottles_list);
+select PREFIX in $(get_bottles_list);
 do
-    [ -z "$filename" ] && echo -e "\nНеправильний вибір: $REPLY\n" && exit 1
-	echo -e "\n$filename\n"
-    PREFIX="$filename"
+    [ -z "$PREFIX" ] && echo -e "\nНеправильний вибір: $REPLY\n" && exit 1
+	echo -e "\n -- $PREFIX\n"
 	break;
 done
 
 # Вибираємо тему для wine-префікса
 echo "Виберіть тему для wine-префікса:"
-select theme in "${THEME_NAMES[@]}";
+select THEME in "${THEME_NAMES[@]}";
 do
-    [ -z "$theme" ] && echo -e "\nНеправильний вибір: $REPLY\n" && exit 1
-	echo -e "\n$theme\n"
+    [ -z "$THEME" ] && echo -e "\nНеправильний вибір: $REPLY\n" && exit 1
+	echo -e "\n -- $THEME\n"
     THEME=${THEME_FILES[$(($REPLY-1))]}
 	break;
 done
