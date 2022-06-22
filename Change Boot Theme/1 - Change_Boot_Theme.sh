@@ -5,7 +5,7 @@ script_file=$(readlink -f -- "${0}")
 script_dir=${script_file%/*}
 
 # Діалог вибору кольору фону, зелений фон за промовчанням
-read -r -p $'Виберіть колір фону: 1 (\e[4mзелений\e[0m), 2 (червоний), 3 (синій): ' response
+read -r -p $'Виберіть колір фону: 1 (\e[1;4;32mзелений\e[0m), 2 (\e[1;31mчервоний\e[0m), 3 (\e[1;34mсиній\e[0m): ' response
 if [ -z "$response" ]
 then
     background_color=1
