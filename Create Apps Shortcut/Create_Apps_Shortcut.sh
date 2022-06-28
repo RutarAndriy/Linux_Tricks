@@ -265,6 +265,9 @@ APP_TERMINAL="true"
 SCRIPT_FILE=$(readlink -f -- "${0}")
 SCRIPT_DIR=${SCRIPT_FILE%/*}
 
+# Переходимо у директорію скрипта
+cd "${SCRIPT_DIR}"
+
 # Робоча директорія програми
 EXEC_PATH=${SCRIPT_DIR}
 
@@ -272,10 +275,10 @@ EXEC_PATH=${SCRIPT_DIR}
 [ ${REPLY} -eq 2 ] && EXEC_PARAMS=\"nemo\" && APP_TERMINAL="false"
 
 # Запустити перший файл із директорії програми, який відповідає масці <test*>
-[ ${REPLY} -eq 3 ] && EXEC_PARAMS=\"$SCRIPT_DIR/$(ls test* | head -1)\"
+[ ${REPLY} -eq 3 ] && EXEC_PARAMS=\"${SCRIPT_DIR}/$(ls test* | head -1)\"
 
 # Інвертувати порядок сортування та запустити перший файл із директорії програми, який відповідає масці <test*>
-[ ${REPLY} -eq 4 ] && EXEC_PARAMS=\"$SCRIPT_DIR/$(ls -r test* | head -1)\"
+[ ${REPLY} -eq 4 ] && EXEC_PARAMS=\"${SCRIPT_DIR}/$(ls -r test* | head -1)\"
 
 # Опис ярлика програми
 echo "\
@@ -296,7 +299,7 @@ mv "${APP_NAME}".desktop "${HOME}/.local/share/applications"
 # Зміна робочої директорії
 cd "${HOME}/.local/share/applications"
 
-# Додавання ярлику прав на виконання програми
+# Додавання ярлику прав виконання
 chmod +x "${APP_NAME}".desktop
 
 # Інформаційне повідомлення
@@ -319,3 +322,5 @@ echo -e "${P}${Y} -- Ярлик тестового прикладу успішн
 
 fi
 
+# Застосовуємо невеличку паузу
+sleep 1
