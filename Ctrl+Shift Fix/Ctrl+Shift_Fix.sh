@@ -7,10 +7,15 @@
 sudo add-apt-repository ppa:nrbrtx/xorg-hotkeys
 
 # Оновлення інформації про доступні пакунки
-sudo apt-get update
+sudo apt update
 
 # Оновлення компонентів системи
-sudo apt-get dist-upgrade
+# sudo apt-get dist-upgrade
+sudo apt install xserver-common \
+                 xserver-xephyr \
+                 xserver-xorg-core \
+                 xserver-xorg-legacy \
+                 xwayland
 
 # Інформаційне повідомлення
 echo Необхідно перезавантажити систему
