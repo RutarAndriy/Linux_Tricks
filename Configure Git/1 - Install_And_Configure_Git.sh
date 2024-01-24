@@ -22,6 +22,9 @@ git config --global color.status.added "$green bold"
 git config --global color.status.untracked "$red bold"
 git config --global color.status.changed "$yellow bold"
 git config --global color.diff.commit "$yellow bold"
+git config --global color.diff.new "$green bold"
+git config --global color.diff.old "$red bold"
+git config --global color.diff.frag "$blue bold"
 
 git config --global alias.custom-log "log --pretty=format:'* %C(bold $red)%h%Creset %s%C(bold $yellow)%d%Creset %C(bold $green)(%cr) %C(bold $blue)<%an>%Creset' --abbrev-commit --date=relative"
 
