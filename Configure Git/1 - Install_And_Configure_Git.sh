@@ -7,10 +7,13 @@ sudo apt-get install git
 git --version
 
 # Логін користувача
-git config --global user.name "RutarAndriy"
+git config --global user.name "Rutar Andriy"
 
 # Пошта користувача
 git config --global user.email "RutarAndriy@gmail.com"
+
+# Текстовий редактор за замовчуванням
+git config --global core.editor xed
 
 # Кольори
 red=#FF3333
