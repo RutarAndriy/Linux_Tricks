@@ -14,7 +14,7 @@ Name=Зробити файл виконуваним
 Comment=Зробити файл %N виконуваним
 Exec=chmod +x %P/%N
 Icon-Name=system-run-symbolic
-Conditions=exec <scripts/run_and_check.sh check_executable.sh %F "\!\=" 0>;
+Conditions=exec <scripts/run_and_check.sh check_executable.sh %F \"!=\" 0>;
 Selection=s
 Extensions=sh;jar;
 Terminal=false" > make_file_executable.nemo_action
@@ -27,7 +27,7 @@ Name=Зробити файл невиконуваним
 Comment=Зробити файл %N невиконуваним
 Exec=chmod -x %P/%N
 Icon-Name=system-run-symbolic
-Conditions=exec <scripts/run_and_check.sh check_executable.sh %F "\=" 0>;
+Conditions=exec <scripts/run_and_check.sh check_executable.sh %F \"=\" 0>;
 Selection=s
 Extensions=sh;jar;
 Terminal=false" > make_file_not_executable.nemo_action
