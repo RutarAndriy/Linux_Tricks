@@ -9,4 +9,3 @@ rm make_file_not_executable.nemo_action
 
 # Видаляємо файли скриптів
 rm scripts/check_executable.sh
-rm scripts/check_not_executable.sh
