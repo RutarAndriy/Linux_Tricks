@@ -10,5 +10,4 @@ rm make_file_unvisible.nemo_action
 # Видаляємо файли скриптів
 rm scripts/check_visibility.sh
 rm scripts/make_file_visible.sh
-rm scripts/check_unvisibility.sh
 rm scripts/make_file_unvisible.sh
