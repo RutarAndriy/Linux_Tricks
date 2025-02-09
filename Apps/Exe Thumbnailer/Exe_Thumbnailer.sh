@@ -1,10 +1,13 @@
 #!/bin/bash
 
 # Встановлення python pip
-sudo apt install python3-pip
+sudo apt install pipx
+
+# Додаємо дані до системної змінної %PATH 
+pipx ensurepath
 
 # Встановлення icoextract
-pip3 install icoextract[thumbnailer]
+pipx install icoextract[thumbnailer]
 
 # Створюємо необхідну директорію
 sudo mkdir /usr/local/share/thumbnailers

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Інсталяція git
-sudo apt-get install git
+sudo apt install git -y
 
 # Показ версії
 git --version
