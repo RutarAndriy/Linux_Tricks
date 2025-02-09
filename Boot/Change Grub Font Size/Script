@@ -1,0 +1,14 @@
+sudo apt install unifont -y
+
+sudo grub-mkfont -s 40 -o /boot/grub/fonts/grub-custom-font.pf2 --verbose /usr/share/fonts/opentype/unifont/unifont.otf
+
+sudo grub-mkfont -s 32 -o /boot/grub/fonts/grub-custom-font.pf2 --verbose ./SourceCodePro-Regular.ttf
+
+GRUB_FONT=/boot/grub/fonts/grub-custom-font.pf2
+
+sudo apt remove unifont & sudo apt autoremove
+
+sudo apt remove unifont -y && sudo apt autoremove -y
+
+sudo update-grub
+reboot
