@@ -4,7 +4,8 @@
 cd ~
 
 # Скачуємо репозиторій із програмою 
-wget -nv -O youtube-dl.zip https://github.com/ytdl-org/youtube-dl/archive/refs/heads/master.zip youtube-dl.zip
+wget -nv -O youtube-dl.zip \
+https://github.com/ytdl-org/youtube-dl/archive/refs/heads/master.zip
 
 # Розпаковуємо архів із репозиторієм
 unzip youtube-dl.zip
