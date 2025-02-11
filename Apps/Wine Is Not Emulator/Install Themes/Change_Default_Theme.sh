@@ -31,10 +31,15 @@ THEME_FILES=(\
 "wine_reset_theme.reg"\
 )
 
+# Отримуємо список wine-префіксів
+LIST=$(get_bottles_list)
+
+# Перевіряємо чи є доступні wine-префікси
+[ -z "$LIST" ] && echo -e "\nНемає жодного wine-префіксу" && exit 1
+
 # Вибираємо wine-префікс
-echo
-echo "Виберіть wine-префікс:"
-select PREFIX in $(get_bottles_list);
+echo -e "\nВиберіть wine-префікс:"
+select PREFIX in $LIST;
 do
     [ -z "$PREFIX" ] && echo -e "\nНеправильний вибір: $REPLY\n" && exit 1
 	echo -e "\n -- $PREFIX\n"

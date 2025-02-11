@@ -15,8 +15,9 @@ IFS=$'\n'
 # Проходимося циклом по основних wine-директоріях
 for DIR in $USER "$USER/.local/share/wineprefixes" "$USER/.photoshopCCV19"; do
     
-    # Задаємо директорію
-    cd "$DIR"
+    # Задаємо директорію якщо вона існує
+    [ -e $DIR ] && cd "$DIR" || continue
+    
     # Записуємо шлях директорії
     local CUR_DIR=$(pwd)
 
