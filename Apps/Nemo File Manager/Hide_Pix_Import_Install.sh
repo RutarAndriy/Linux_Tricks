@@ -3,13 +3,13 @@
 # Переходимо у директорію .config
 cd ~/.config
 
-# Перевіряємо наявність строки "[Removed Associations]"
+# Перевіряємо наявність рядка "[Removed Associations]"
 if grep -Fxq "[Removed Associations]" mimeapps.list
 then
-    # Строку знайдено
+    # Рядок знайдено
     sed -i '/\[Removed Associations\]/ a x-content/image-dcf=pix-import.desktop;' mimeapps.list
 else
-    # Строку не знайдено
+    # Рядок не знайдено
     echo -e "\n[Removed Associations]\nx-content/image-dcf=pix-import.desktop;" >> mimeapps.list
 fi
 
